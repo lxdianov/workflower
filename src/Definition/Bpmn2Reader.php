@@ -328,6 +328,14 @@ class Bpmn2Reader
                 $config['defaultSequenceFlowId'] = $defaultSequenceFlowId;
             }
 
+            $tagShort = preg_replace('#^.+\:#', '', $element->tagName);
+            if ($tagShort == 'endEvent') {
+                if ($element->getElementsByTagNameNs('http://www.omg.org/spec/BPMN/20100524/MODEL',
+                    'terminateEventDefinition')->length) {
+                    $config['terminateEvent'] = 1;
+                }
+            }
+
             $items[] = $config;
         }
 

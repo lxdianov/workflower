@@ -353,15 +353,11 @@ class ProcessDefinition implements ProcessDefinitionInterface
             $clone = array_merge([], $config);
             $this->replaceRoleInConfig($processInstance, $clone);
 
-            if (isset($config['id']) && ($config['id'] == 'Event_0mu3wir'
-                    || $config['id'] == 'Event_05m1sxv'
-                    || $config['id'] == 'Event_097tn4g')) {
+            if (!empty($config['terminateEvent'])) {
                 $processInstance->addFlowObject(new TerminateEndEvent($clone));
             } else {
                 $processInstance->addFlowObject(new EndEvent($clone));
             }
-
-            //$processInstance->addFlowObject(new EndEvent($clone));
         }
 
         foreach ($this->tasks as $config) {
