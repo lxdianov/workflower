@@ -75,6 +75,9 @@ abstract class Gateway extends FlowObject implements GatewayInterface
     {
         $processInstance = $this->getProcessInstance();
 
+
+        
+
         foreach ($this->getToken() as $token) {
             $processInstance->removeToken($this, $token);
         }
