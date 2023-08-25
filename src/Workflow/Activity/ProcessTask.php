@@ -43,6 +43,9 @@ class ProcessTask extends Task
         $instance->setProcessData($data);
         $this->getWorkItems()->add($instance);
 
+        $pInstance = $this->getProcessInstance();
+        $instance->setOperationRunner($pInstance->getOperationRunner());
+
         $instance->start($instance->getFirstStartEvent());
 
         return $instance;
