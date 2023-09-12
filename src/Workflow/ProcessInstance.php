@@ -161,6 +161,30 @@ class ProcessInstance implements ProcessInstanceInterface
         $this->activityLogCollection = new ActivityLogCollection();
     }
 
+    public function __serialize(): array
+    {
+        return [
+            'id' => $this->id,
+            'name' => $this->name,
+            'parentProcessInstance' => $this->parentProcessInstance,
+            'parentActivity' => $this->parentActivity,
+            'state' => $this->state,
+            'endDate' => $this->endDate,
+            'processData' => $this->processData,
+            'roleCollection' => $this->roleCollection,
+            'endEvents' => $this->endEvents,
+            'expressionLanguage' => $this->expressionLanguage,
+            'dataProvider' => $this->dataProvider,
+            'startEvent' => $this->startEvent,
+            'tokens' => $this->tokens,
+            'activityLogCollection' => $this->activityLogCollection,
+            'processDefinition' => $this->processDefinition,
+            'connectingObjectCollection' => $this->connectingObjectCollection,
+            'flowObjectCollection' => $this->flowObjectCollection,
+            //'operationRunner' => $this->operationRunner,
+        ];
+    }
+
     /**
      * {@inheritdoc}
      *
